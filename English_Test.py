@@ -57,7 +57,7 @@ if __name__ == '__main__':
 			for i in infinitive:
 				ran = random.randint(0, 1)
 				if ran == 1:
-					print("{} / {} / {}".format(i, past[count], pp[count]))
+					print("{} / {} / {}".format(infinitive[count], past[count], pp[count]))
 					count2 += 1
 				else:
 					continue
