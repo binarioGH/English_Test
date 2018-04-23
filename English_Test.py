@@ -29,9 +29,9 @@ def check(word, your_word):
 		return False
 
 if __name__ == '__main__':
-	infinitive = ("arise", "awake", "bear", "beat", "become", "begin", "bend", "bet", "bind", "bite", "blow", "break", "bring", "build", "burn","burst", "buy", "catch", "choose", "cling", "come", "cost", "creep", "cut", "deal", "dig", "do", "draw", "drink", "drive")
-	past = ("arose", "awoke", "bore", "beat", "became", "began", "bent", "bet", "bound", "bit", "blew", "broke", "brought", "built", "burnt", "burst", "bought", "caught", "chose", "clung", "came", "cost", "crept", "cut", "dealt", "dug", "did", "drew", "drank", "drove")
-	pp = ("arisen", "awoken", "born", "beaten", "become", "begun", "bent", "bet", "bound", "bitten", "blown", "broken", "brought", "built", "burnt", "burst", "bought", "caught", "chosen", "clung", "come", "cost", "crept", "cut", "dealt", "dug", "done", "drawn", "drunk", "driven")
+	infinitive = ("arise", "awake", "bear", "beat", "become", "begin", "bend", "bet", "bind", "bite", "blow", "break", "bring", "build", "burn","burst", "buy", "catch", "choose", "cling", "come", "cost", "creep", "cut", "deal", "dig", "do", "draw", "drink", "drive", "fall", "feed", "feel", "fight", "find")
+	past = ("arose", "awoke", "bore", "beat", "became", "began", "bent", "bet", "bound", "bit", "blew", "broke", "brought", "built", "burnt", "burst", "bought", "caught", "chose", "clung", "came", "cost", "crept", "cut", "dealt", "dug", "did", "drew", "drank", "drove", "fell", "fed", "felt", "fought", "found")
+	pp = ("arisen", "awoken", "born", "beaten", "become", "begun", "bent", "bet", "bound", "bitten", "blown", "broken", "brought", "built", "burnt", "burst", "bought", "caught", "chosen", "clung", "come", "cost", "crept", "cut", "dealt", "dug", "done", "drawn", "drunk", "driven", "fallen", "fed", "felt", "fought", "found")
 	choice = str()
 	while choice != "exit":
 		subprocess.call(["cmd.exe","/c","cls"])
@@ -53,12 +53,22 @@ if __name__ == '__main__':
 		elif choice == "3":
 			subprocess.call(["cmd.exe", "/c", "cls"])
 			count = 0
+			count2 = 0
 			for i in infinitive:
-				print("{} / {} / {}".format(i, past[count], pp[count]))
+				ran = random.randint(0, 1)
+				if ran == 1:
+					print("{} / {} / {}".format(i, past[count], pp[count]))
+					count2 += 1
+				else:
+					continue
 				count += 1
 			print("")
 			print("")
-			print("scroll up for more verbs")
+			if count2 != 30:
+				print("not all the verbs are in the list ")
+			if count2 >= 23:
+				print("scroll up for more verbs")
+
 			getpass.getpass("press enter to exit.")
 
 	
