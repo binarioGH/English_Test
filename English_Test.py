@@ -59,9 +59,11 @@ def questions(name, years, check):
 	q2 = input(">")
 	if q2.lower() == "eat":
 		count += 1
-	q1 = questions2("how old are you?", "A. I have {} years old".format(years), "B. I have {} years".format(years), "C. I am fine", "D. I am {} years old".format(years), "D")
+	q1 = questions2("How old are you?", "A. I have {} years old".format(years), "B. I have {} years".format(years), "C. I am fine", "D. I am {} years old".format(years), "D")
+	q1 += questions2("He went to the Stadium .....", "A. with taxi", "B. by taxi", "C. on taxi", "D. in taxi", "B")
+	q1 += questions2("Choose the correct sentence.", "A. He like going to the movies", "B. He likes going to the movies", "C. He liked go to the movies", "D. He like the movies", "B")
 	count += q1
-	if count == 3:
+	if count == 5:
 		return 1
 	else:
 		return -2
