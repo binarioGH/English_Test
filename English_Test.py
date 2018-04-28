@@ -10,7 +10,7 @@ def lov(l1, l2, l3):
 	count = 0
 	count2 = 0
 	for i in infinitive:
-		ran = random.randint(0, 1)
+		ran = random.randint(0, 2)
 		if ran == 1:
 			print("{} / {} / {}".format(l1[count], l2[count], l3[count]))
 			count2 += 1
@@ -19,11 +19,25 @@ def lov(l1, l2, l3):
 		count += 1
 	print("")
 	print("")
-	if count2 != 40:
+	if count2 != 64:
 		print("not all the verbs are in the list ")
-	if count2 >= 23:
+	if count2 >= 24:
 		print("scroll up for more verbs")
 	getpass.getpass("press enter to exit.")
+def questions2(q, s1, s2, s3, s4, answ):
+	resp = str()
+	while len(resp) != 1:
+		subprocess.call(["cmd.exe","/c","cls"])
+		print(q)
+		print(s1)
+		print(s2)
+		print(s3)
+		print(s4)
+		resp =input("your answer: ")
+	if resp.upper() == answ:
+		return 1
+	else:
+		return -1
 
 def questions(name, years, check):
 	subprocess.call(["cmd.exe", "/c", "cls"])
@@ -36,7 +50,7 @@ def questions(name, years, check):
 	nname = random.choice(names)
 	yyear = random.randint(11, 60)
 	print("{} is {} years old. is {} older then you?".format(nname, yyear, nname))
-	q1 = str(input("press 'y' for answere 'yes' and 'n' for 'no': "))
+	q1 = str(input("press 'y' for answer 'yes' and 'n' for 'no': "))
 	q1 = q1.lower()
 	if q1 == "y" and yyear > years or q1 == "n" and yyear < years:
 		count += 1
@@ -45,7 +59,9 @@ def questions(name, years, check):
 	q2 = input(">")
 	if q2.lower() == "eat":
 		count += 1
-	if count == 2:
+	q1 = questions2("how old are you?", "A. I have {} years old".format(years), "B. I have {} years".format(years), "C. I am fine", "D. I am {} years old".format(years), "D")
+	count += q1
+	if count == 3:
 		return 1
 	else:
 		return -2
@@ -87,9 +103,9 @@ if __name__ == '__main__':
 	subprocess.call(["cmd.exe","/c","cls"])
 	name = input("what is your name?: ")
 	years = int(input("how old are you?: "))
-	infinitive = ("arise", "awake", "bear", "beat", "become", "begin", "bend", "bet", "bind", "bite", "blow", "break", "bring", "build", "burn","burst", "buy", "catch", "choose", "cling", "come", "cost", "creep", "cut", "deal", "dig", "do", "draw", "drink", "drive", "fall", "feed", "feel", "fight", "find", "flee", "fly", "forbid", "foresee", "forget")
-	past = ("arose", "awoke", "bore", "beat", "became", "began", "bent", "bet", "bound", "bit", "blew", "broke", "brought", "built", "burnt", "burst", "bought", "caught", "chose", "clung", "came", "cost", "crept", "cut", "dealt", "dug", "did", "drew", "drank", "drove", "fell", "fed", "felt", "fought", "found", "fled", "flew", "forbade", "foresaw", "forgot")
-	pp = ("arisen", "awoken", "born", "beaten", "become", "begun", "bent", "bet", "bound", "bitten", "blown", "broken", "brought", "built", "burnt", "burst", "bought", "caught", "chosen", "clung", "come", "cost", "crept", "cut", "dealt", "dug", "done", "drawn", "drunk", "driven", "fallen", "fed", "felt", "fought", "found", "fled", "flown", "forbidden", "foreseen", "forgotten")
+	infinitive = ("arise", "awake", "bear", "beat", "become", "begin", "bend", "bet", "bind", "bite", "blow", "break", "bring", "build", "burn","burst", "buy", "catch", "choose", "cling", "come", "cost", "creep", "cut", "deal", "dig", "do", "draw", "drink", "drive", "fall", "feed", "feel", "fight", "find", "flee", "fly", "forbid", "foresee", "forget", "forgive","freeze","get","give","go","grind","grow","hang","have","hear","hide","hit","hold","hurt","keep","know","lay","lead","lean","learn","leave","lend")
+	past = ("arose", "awoke", "bore", "beat", "became", "began", "bent", "bet", "bound", "bit", "blew", "broke", "brought", "built", "burnt", "burst", "bought", "caught", "chose", "clung", "came", "cost", "crept", "cut", "dealt", "dug", "did", "drew", "drank", "drove", "fell", "fed", "felt", "fought", "found", "fled", "flew", "forbade", "foresaw", "forgot","forgave","froze","got","gave","went","ground","grew","hung","had","heard","hid","hit","held","hurt","kept","knew","laid","led","leant","learnt","left","lent")
+	pp = ("arisen", "awoken", "born", "beaten", "become", "begun", "bent", "bet", "bound", "bitten", "blown", "broken", "brought", "built", "burnt", "burst", "bought", "caught", "chosen", "clung", "come", "cost", "crept", "cut", "dealt", "dug", "done", "drawn", "drunk", "driven", "fallen", "fed", "felt", "fought", "found", "fled", "flown", "forbidden", "foreseen", "forgotten","forgotten","forgiven","frozen","got","given","gone","ground","grown","hung","had","heard","hid","hit","held","hurt","kept","known","laid","led","leant","learnt","left","lent")
 	choice = str()
 	points = 0
 	while choice != "exit":
