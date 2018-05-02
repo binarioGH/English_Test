@@ -108,6 +108,7 @@ if __name__ == '__main__':
 	infinitive = ("arise", "awake", "bear", "beat", "become", "begin", "bend", "bet", "bind", "bite", "blow", "break", "bring", "build", "burn","burst", "buy", "catch", "choose", "cling", "come", "cost", "creep", "cut", "deal", "dig", "do", "draw", "drink", "drive", "fall", "feed", "feel", "fight", "find", "flee", "fly", "forbid", "foresee", "forget", "forgive","freeze","get","give","go","grind","grow","hang","have","hear","hide","hit","hold","hurt","keep","know","lay","lead","lean","learn","leave","lend")
 	past = ("arose", "awoke", "bore", "beat", "became", "began", "bent", "bet", "bound", "bit", "blew", "broke", "brought", "built", "burnt", "burst", "bought", "caught", "chose", "clung", "came", "cost", "crept", "cut", "dealt", "dug", "did", "drew", "drank", "drove", "fell", "fed", "felt", "fought", "found", "fled", "flew", "forbade", "foresaw", "forgot","forgave","froze","got","gave","went","ground","grew","hung","had","heard","hid","hit","held","hurt","kept","knew","laid","led","leant","learnt","left","lent")
 	pp = ("arisen", "awoken", "born", "beaten", "become", "begun", "bent", "bet", "bound", "bitten", "blown", "broken", "brought", "built", "burnt", "burst", "bought", "caught", "chosen", "clung", "come", "cost", "crept", "cut", "dealt", "dug", "done", "drawn", "drunk", "driven", "fallen", "fed", "felt", "fought", "found", "fled", "flown", "forbidden", "foreseen", "forgotten","forgotten","forgiven","frozen","got","given","gone","ground","grown","hung","had","heard","hid","hit","held","hurt","kept","known","laid","led","leant","learnt","left","lent")
+	gerund = ("arising", "awakening", "bearing", "beating", "becoming", "beginning", "bending", "betting", "binding", "biting", "blowing", "breaking", "bringing", "building", "burning", "bursting", "buying", "catching", "choosing", "clinging", "coming", "costing", "creeping", "cutting", "dealing", "doing", "drawing", "drinking", "driving", "falling", "feeding", "feeling", "fighting", "finding", "fleeing", "flying", "forbidding", "foreseeing", "forgetting", "forgiving", "freezing", "getting", "giving", "going", "grinding", "growing", "hanging", "having", "hearing", "hiding", "hitting", "holding", "hurting", "keeping", "knowing", "laying", "leading", "leaning", "learning", "leaving", "lending")
 	choice = str()
 	points = 0
 	while choice != "exit":
@@ -129,6 +130,7 @@ if __name__ == '__main__':
             [2] past participle
             [3] list of verbs
             [4] basic questions	
+            [5] gerund
 
             write [exit] to quit
 
@@ -146,3 +148,5 @@ if __name__ == '__main__':
 			q = questions(name, years, check)
 			points += q
 			check = True
+		elif choice == "5":
+			gerund_verbs = verbs(gerund, infinitive)
