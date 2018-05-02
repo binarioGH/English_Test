@@ -150,3 +150,4 @@ if __name__ == '__main__':
 			check = True
 		elif choice == "5":
 			gerund_verbs = verbs(gerund, infinitive)
+			points += gerund_verbs
