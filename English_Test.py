@@ -45,7 +45,7 @@ def questions(name, years, check):
 		print("This questions only can be answered once")
 		getpass.getpass("press enter to exit...")
 		return 0
-	names = ["pablo", "juan", "john", "joel"]
+	names = ["pablo", "juan", "john", "joel", "jason", "joseph", "martha", "adriana", "vera", "frida", "alejandra"]
 	count = 0
 	nname = random.choice(names)
 	yyear = random.randint(11, 60)
@@ -63,7 +63,7 @@ def questions(name, years, check):
 	q1 += questions2("He went to the Stadium .....", "A. with taxi", "B. by taxi", "C. on taxi", "D. in taxi", "B")
 	q1 += questions2("Choose the correct sentence.", "A. He like going to the movies", "B. He likes going to the movies", "C. He liked go to the movies", "D. He like the movies", "B")
 	count += q1
-	if count == 5:
+	if count == 6:
 		return 1
 	else:
 		return -2
@@ -82,12 +82,12 @@ def verbs(time, inf):
 		print("write this verb in infinitve: {}".format(time[vrb]))
 		print("write 'back' if you want to exit")
 		print("score: {}".format(score))
-		answ = input("> to ")
+		answ = input("> ")
 		answ = answ.lower()
-		if answ == inf[vrb]:
+		if answ == inf[vrb] or answ[:3] == "to " and answ[3:] == inf[vrb]:
 			score += 1
 		elif answ == "back":
-			break
+			return 0
 		else:
 			score -= 1
 	if score == 10:
