@@ -5,6 +5,7 @@ import getpass
 
 # codigo hecho por Diego Jonás Pérez.
 
+
 def lov(l1, l2, l3):
 	subprocess.call(["cmd.exe", "/c", "cls"])
 	count = 0
@@ -21,9 +22,11 @@ def lov(l1, l2, l3):
 	print("")
 	if count2 != 64:
 		print("not all the verbs are in the list ")
-	if count2 >= 24:
+	if count2 >= 24:	
 		print("scroll up for more verbs")
 	getpass.getpass("press enter to exit.")
+
+
 def questions2(q, s1, s2, s3, s4, answ):
 	resp = str()
 	while len(resp) != 1:
@@ -35,41 +38,32 @@ def questions2(q, s1, s2, s3, s4, answ):
 		print(s4)
 		resp =input("your answer: ")
 	if resp.upper() == answ:
+		print("correct :)")
+		getpass.getpass("press enter to continue...")
 		return 1
 	else:
+		print("incorrect, the correct answer is: {}".format(answ))
+		getpass.getpass("press enter to continue...")
 		return -1
 
-def questions(name, years, check):
+
+def questions(years, name):
+	# real test: englishtag.com/tests/level_test.asp
 	subprocess.call(["cmd.exe", "/c", "cls"])
-	if check == True:
-		print("This questions only can be answered once")
-		getpass.getpass("press enter to exit...")
-		return 0
-	names = ["pablo", "juan", "john", "joel", "jason", "joseph", "martha", "adriana", "vera", "frida", "alejandra"]
-	count = 0
-	nname = random.choice(names)
-	yyear = random.randint(11, 60)
-	print("{} is {} years old. is {} older then you?".format(nname, yyear, nname))
-	q1 = str(input("press 'y' for answer 'yes' and 'n' for 'no': "))
-	q1 = q1.lower()
-	if q1 == "y" and yyear > years or q1 == "n" and yyear < years:
-		count += 1
-	subprocess.call(["cmd.exe", "/c", "cls"])
-	print("complete the sentence: i never ... italian food.")
-	q2 = input(">")
-	if q2.lower() == "eat":
-		count += 1
 	q1 = questions2("How old are you?", "A. I have {} years old".format(years), "B. I have {} years".format(years), "C. I am fine", "D. I am {} years old".format(years), "D")
 	q1 += questions2("He went to the Stadium .....", "A. with taxi", "B. by taxi", "C. on taxi", "D. in taxi", "B")
 	q1 += questions2("Choose the correct sentence.", "A. He like going to the movies", "B. He likes going to the movies", "C. He liked go to the movies", "D. He like the movies", "B")
-	count += q1
-	if count == 6:
+	q1 += questions2("Peter ..... fly to San Francisco tomorrow.", "A. to going", "B. goes to", "C. is going to","D. go to", 'C')
+	q1 += questions2("He plays soccer .....", "A. on Wednesdays", "B. in Wednesdays", "C. at Wednesdays","D. by Wednesdays", 'A')
+	q1 += questions2("It's no use ..... to him. He doesn't listen.", "A. speaking", "B. to speak", "C. spoke", "D. have spoken", 'A')
+	if q1 > 3 and q1 > 6:
 		return 1
-	else:
+	elif q1 == 6:
+		return 2
+	elif q1 <= 3 and q1 < 1:
+		return -1
+	elif q1 < 1:
 		return -2
-
-
-
 
 
 def verbs(time, inf):
@@ -128,9 +122,10 @@ if __name__ == '__main__':
 
             [1] past
             [2] past participle
-            [3] list of verbs
-            [4] basic questions	
-            [5] gerund
+            [3] gerund
+            [4] basic questions
+            [5] list of verbs	
+            
 
             write [exit] to quit
 
@@ -143,11 +138,12 @@ if __name__ == '__main__':
 			points += pp_verbs
 
 		elif choice == "3":
-			lov(infinitive, past, pp)
-		elif choice == "4":
-			q = questions(name, years, check)
-			points += q
-			check = True
-		elif choice == "5":
 			gerund_verbs = verbs(gerund, infinitive)
 			points += gerund_verbs
+
+		elif choice == "4":
+			q = questions(years, name)
+			points += q
+
+		elif choice == "5":
+			lov(infinitive, past, pp)
