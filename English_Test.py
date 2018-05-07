@@ -6,14 +6,14 @@ import getpass
 # codigo hecho por Diego Jonás Pérez.
 
 
-def lov(l1, l2, l3):
+def lov(l1, l2, l3, l4):
 	subprocess.call(["cmd.exe", "/c", "cls"])
 	count = 0
 	count2 = 0
 	for i in infinitive:
 		ran = random.randint(0, 2)
 		if ran == 1:
-			print("{} / {} / {}".format(l1[count], l2[count], l3[count]))
+			print("{} / {} / {} /".format(l1[count], l2[count], l3[count], l4[count2]))
 			count2 += 1
 		else:
 			continue
@@ -25,7 +25,8 @@ def lov(l1, l2, l3):
 	if count2 >= 24:	
 		print("scroll up for more verbs")
 	getpass.getpass("press enter to exit.")
-
+	count2 = count2 % 2
+	return count2 + 1
 
 def questions2(q, s1, s2, s3, s4, answ):
 	resp = str()
@@ -47,18 +48,23 @@ def questions2(q, s1, s2, s3, s4, answ):
 		return -1
 
 
-def questions(years, name):
+def questions(years, name, check):
 	# real test: englishtag.com/tests/level_test.asp
 	subprocess.call(["cmd.exe", "/c", "cls"])
+	if check == False:
+		print("You can only answer these questions once")
+		getpass.getpass("press enter to exit.")
+		return 0
 	q1 = questions2("How old are you?", "A. I have {} years old".format(years), "B. I have {} years".format(years), "C. I am fine", "D. I am {} years old".format(years), "D")
 	q1 += questions2("He went to the Stadium .....", "A. with taxi", "B. by taxi", "C. on taxi", "D. in taxi", "B")
 	q1 += questions2("Choose the correct sentence.", "A. He like going to the movies", "B. He likes going to the movies", "C. He liked go to the movies", "D. He like the movies", "B")
 	q1 += questions2("Peter ..... fly to San Francisco tomorrow.", "A. to going", "B. goes to", "C. is going to","D. go to", 'C')
 	q1 += questions2("He plays soccer .....", "A. on Wednesdays", "B. in Wednesdays", "C. at Wednesdays","D. by Wednesdays", 'A')
 	q1 += questions2("It's no use ..... to him. He doesn't listen.", "A. speaking", "B. to speak", "C. spoke", "D. have spoken", 'A')
-	if q1 > 3 and q1 > 6:
+	q1 += questions2(".... some more coffee?", "A. Do you?", "B. Do you like?", "C. You'd like","D. Would you like?", 'B')
+	if q1 > 3 and q1 <= 6:
 		return 1
-	elif q1 == 6:
+	elif q1 == 7:
 		return 2
 	elif q1 <= 3 and q1 < 1:
 		return -1
@@ -95,7 +101,7 @@ def finish(tier):
 
 
 if __name__ == '__main__':
-	check = False
+	check = True
 	subprocess.call(["cmd.exe","/c","cls"])
 	name = input("what is your name?: ")
 	years = int(input("how old are you?: "))
@@ -142,8 +148,11 @@ if __name__ == '__main__':
 			points += gerund_verbs
 
 		elif choice == "4":
-			q = questions(years, name)
+			q = questions(years, name, check)
 			points += q
+			check = False 
 
 		elif choice == "5":
-			lov(infinitive, past, pp)
+			lsv = lov(infinitive, past, pp, gerund)
+			points -= lsv
+
