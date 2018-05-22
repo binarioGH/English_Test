@@ -72,19 +72,19 @@ def questions(years, name, check):
 		return -2
 
 
-def verbs(time, inf):
+def verbs(time, inf, verb):
 	score = 0
 	while score < 10:
 		if score < -5:
 			break
 		subprocess.call(["cmd.exe", "/c", "cls"])
 		vrb = random.randint(0, 29)
-		print("write this verb in infinitve: {}".format(time[vrb]))
+		print("write this verb in {}: {}".format(verb, inf[vrb]))
 		print("write 'back' if you want to exit")
 		print("score: {}".format(score))
 		answ = input("> ")
 		answ = answ.lower()
-		if answ == inf[vrb] or answ[:3] == "to " and answ[3:] == inf[vrb]:
+		if answ == time[vrb]:
 			score += 1
 		elif answ == "back":
 			return 0
@@ -137,14 +137,14 @@ if __name__ == '__main__':
 
             > '''.format(name, points)))
 		if choice == "1":
-			past_verbs = verbs(past, infinitive)
+			past_verbs = verbs(past, infinitive, "past")
 			points += past_verbs
 		elif choice == "2":
-			pp_verbs = verbs(pp, infinitive)
+			pp_verbs = verbs(pp, infinitive, "past participle")
 			points += pp_verbs
 
 		elif choice == "3":
-			gerund_verbs = verbs(gerund, infinitive)
+			gerund_verbs = verbs(gerund, infinitive, "gerund")
 			points += gerund_verbs
 
 		elif choice == "4":
